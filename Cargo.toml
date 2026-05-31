@@ -1,0 +1,35 @@
+[package]
+name = "helicopter"
+version = "0.1.0"
+edition = "2024"
+description = "A GNOME desktop helicopter reminder animation"
+license = "MIT"
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+ksni = { version = "0.3", default-features = false, features = ["async-io", "blocking"] }
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+softbuffer = "0.4"
+urlencoding = "2"
+winit = "0.30"
+
+[package.metadata.deb]
+maintainer = "Adam <adam@example.local>"
+copyright = "2026, Adam"
+license-file = ["LICENSE", "0"]
+extended-description = """
+Helicopter reads upcoming Google Calendar events, waits in the background with a GNOME top-bar status icon, and shows a transparent always-on-top helicopter banner animation using the event title.
+"""
+section = "utils"
+priority = "optional"
+depends = "$auto"
+recommends = "gnome-shell-extension-appindicator"
+assets = [
+  ["target/release/helicopter", "usr/bin/helicopter", "755"],
+  ["packaging/helicopter.desktop", "usr/share/applications/helicopter.desktop", "644"],
+  ["packaging/helicopter-autostart.desktop", "etc/xdg/autostart/helicopter.desktop", "644"],
+  ["packaging/helicopter.svg", "usr/share/icons/hicolor/scalable/apps/helicopter.svg", "644"],
+  ["docs/google-calendar.md", "usr/share/doc/helicopter/google-calendar.md", "644"],
+]

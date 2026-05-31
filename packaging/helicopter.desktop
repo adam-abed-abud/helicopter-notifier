@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Helicopter
+Comment=Show a scheduled helicopter banner animation
+Exec=helicopter
+Icon=helicopter
+Terminal=false
+Categories=Utility;
